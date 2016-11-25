@@ -70,11 +70,11 @@ Exteranl links section present in function, medical, expression, interactins, se
   <script>
     Polymer({
       is: 'xrefs-section',
-      nxConfig: {
-        type: Object,
-        value: {}
-      },
       properties: {
+        nxConfig: {
+          type: Object,
+          value: {}
+        },
         categories: {
           type: Array
         },
@@ -83,12 +83,12 @@ Exteranl links section present in function, medical, expression, interactins, se
           notify: true
         }
       },
-      created: function(){
-        var nx = new Nextprot.Client("neXtprot overview loader", "Calipho Group");
+      ready: function(){
+        var nx = new Nextprot.Client("xref-section", "ndu");
         var self=this;
         nx.getAnnotationsByCategory(self.nxConfig.entry, "xref")
           .then(function (data) {
-            var xrefList = self.getXrefByView(Object.keys(data.xrefs).map(function(k) { return data.xrefs[k] }));
+            self.getXrefByView(Object.keys(data.xrefs).map(function(k) { return data.xrefs[k] }));
             self.$.spinner.active = false;
           }).catch(function (err) {
             // catch any error that happened so far
