@@ -16,8 +16,8 @@
   "homepage": "https://github.com/calipho-sib-webcomponents/xrefs-section",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
-    "bootstrap": "^3.3.7",
-    "nextprot-js": "nextprot#^X.X.X"
+    "nextprot-js": "nextprot#^X.X.X",
+    "shared-styles": "git://github.com/calipho-sib-webcomponents/shared-styles.git#develop"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
