@@ -2,7 +2,9 @@
   "name": "xrefs-section",
   "description": "Exteranl links section present in function, medical, expression, interactins, sequence, proteomics and structures views.",
   "license": "GNU GPL",
-  "authors": ["marcin.domagalski@sib.swiss"],
+  "authors": [
+    "marcin.domagalski@sib.swiss"
+  ],
   "keywords": [
     "web-components",
     "nextprot-webcomponents",
@@ -18,6 +20,7 @@
     "polymer": "Polymer/polymer#^1.4.0",
     "nextprot-js": "nextprot#^X.X.X",
     "shared-styles": "git://github.com/calipho-sib-webcomponents/shared-styles.git#develop"
+    "paper-spinner": "PolymerElements/paper-spinner#~1.2.1"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

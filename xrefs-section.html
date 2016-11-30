@@ -58,12 +58,12 @@ Exteranl links section present in function, medical, expression, interactins, se
                 </div>
               </div>
             </template>
-          </template>
         </div>
       </div>
-        <template is="dom-if" if="{_checkIfLast(data,index)}}">
-          <hr class="bottom-line">
-        </template>
+      <template is="dom-if" if="{_checkIfLast(data,index)}}">
+        <hr class="bottom-line">
+      </template>
+      </template>
       </template>
     </div>
   </template>
@@ -71,6 +71,10 @@ Exteranl links section present in function, medical, expression, interactins, se
     Polymer({
       is: 'xrefs-section',
       properties: {
+        nxConfig: {
+          type: Object,
+          value: {}
+        },
         categories: {
           type: Array
         },
@@ -79,13 +83,12 @@ Exteranl links section present in function, medical, expression, interactins, se
           notify: true
         }
       },
-      created: function(){
-        var nx = new Nextprot.Client("neXtprot overview loader", "Calipho Group");
-        var nxEntryName = nx.getEntryName();
+      ready: function(){
+        var nx = new Nextprot.Client("xref-section", "ndu");
         var self=this;
-        nx.getAnnotationsByCategory(nxEntryName, "xref")
+        nx.getAnnotationsByCategory(self.nxConfig.entry, "xref")
           .then(function (data) {
-            var xrefList = self.getXrefByView(Object.keys(data.xrefs).map(function(k) { return data.xrefs[k] }));
+            self.getXrefByView(Object.keys(data.xrefs).map(function(k) { return data.xrefs[k] }));
             self.$.spinner.active = false;
           }).catch(function (err) {
             // catch any error that happened so far
