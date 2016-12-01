@@ -71,10 +71,6 @@ Exteranl links section present in function, medical, expression, interactions, s
     Polymer({
       is: 'xrefs-section',
       properties: {
-        nxConfig: {
-          type: Object,
-          value: {}
-        },
         categories: {
           type: Array
         },
@@ -86,7 +82,8 @@ Exteranl links section present in function, medical, expression, interactions, s
       ready: function(){
         var nx = new Nextprot.Client("xref-section", "ndu");
         var self=this;
-        nx.getAnnotationsByCategory(self.nxConfig.entry, "xref")
+        var nxEntryName = nx.getEntryName();		
+        nx.getAnnotationsByCategory(nxEntryName, "xref")
           .then(function (data) {
             self.getXrefByView(Object.keys(data.xrefs).map(function(k) { return data.xrefs[k] }));
             self.$.spinner.active = false;
